@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { Express } from "express";
 
-export function initDatabase(PORT: number, URI: string, app: Express) {
+export function initDatabase(PORT: string | number, URI: string, app: Express) {
 
     mongoose.connect(URI);
 
@@ -16,7 +16,7 @@ export function initDatabase(PORT: number, URI: string, app: Express) {
 
 }
 
-function startServer(PORT: number, app: Express) {
+function startServer(PORT: string | number, app: Express) {
 
     app.listen(PORT, () => {
         console.log( `server started at http://localhost:${ PORT }` );
