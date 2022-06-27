@@ -22,12 +22,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
-const Periods_1 = __importDefault(require("./Periods"));
 const featureSchema = new mongoose_1.Schema({
     type: { type: String, required: true },
     geometry: {
@@ -46,7 +42,16 @@ const featureSchema = new mongoose_1.Schema({
         address: String,
         postalCode: String,
         schedule: {
-            periods: [Periods_1.default],
+            periods: [{
+                    open: {
+                        day: Number,
+                        time: String
+                    },
+                    close: {
+                        day: Number,
+                        time: String
+                    }
+                }],
             weekday_text: (Array)
         },
         formatted_phone_number: String,

@@ -1,5 +1,4 @@
 import mongoose, { Schema } from 'mongoose'
-import Periods from "./Periods";
 
 const featureSchema = new Schema( {
     type: { type: String, required: true },
@@ -19,7 +18,16 @@ const featureSchema = new Schema( {
         address: String,
         postalCode: String,
         schedule: {
-            periods: [Periods],
+            periods: [{
+                open: {
+                    day: Number,
+                    time: String
+                },
+                close: {
+                    day: Number,
+                    time: String
+                }
+            }],
             weekday_text: Array<string>
         },
         formatted_phone_number: String,
