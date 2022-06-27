@@ -1,37 +1,53 @@
 import mongoose, { Schema, Document } from 'mongoose'
 
-export interface Feature extends Document {
-    id: number
-    type: string,
+const pharmSchema=new mongoose.Schema( {
+    type: String,
     geometry: {
-        type: string,
-        coordinates: Array<number>,
+        type: String,
+        coordinates: Array<number>
     },
     properties: {
-        name: string,
-        postalCode: string,
-        tel: string,
-        city: string,
-        address: string,
-        //schedule:string;
+        cnn: String,
+        caac: String,
+        country: String,
+        comAut: String,
+        province: String,
+        town: String,
+        name: String,
+        pharmacy_name: String,
+        address: String,
+        postalCode: String,
+        tel: String,
+        place_id: String,
+        schedule:String,
+        weekday_text:Array<string>
     }
-}
-
+})
+/*
 const FeatureSchema: Schema = new Schema({
-    id: { type: Number, unique: true, required: true },
     type: { type: String, required: true },
     geometry: {
         type: { type: String, required: true },
         coordinates: { type: Array, required: true }
     },
     properties: {
+        cnn: { type: String, required: true },
+        caac: { type: String, required: true },
+        country: { type: String, required: true },
+        comAut: { type: String, required: true },
+        province: { type: String, required: true },
+        town: { type: String, required: true },
         name: { type: String, required: true },
+        pharmacy_name: { type: String, required: true },
         postalCode: { type: String, required: true },
         tel: { type: String, required: true },
-        city: { type: String, required: true },
-        address: { type: String, required: true }
+        place_id: { type: String, required: true },
+        address: { type: String, required: true },
+        schedule: { type: Array, required: true },
+        weekday_text: { type: String, required: true },
     }
 })
+*/
 
 // * Export the model and return the interface
-export default mongoose.model<Feature>('Feature', FeatureSchema);
+export default mongoose.model('Feature', pharmSchema);
