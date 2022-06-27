@@ -2,7 +2,7 @@
   "name": "apifinda",
   "version": "1.0.0",
   "description": "",
-  "main": "src/server.ts",
+  "main": "src/v1/server.ts",
   "scripts": {
     "start": "nodemon",
     "lint": "eslint . --ext .ts",
