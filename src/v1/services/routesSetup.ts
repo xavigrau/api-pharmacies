@@ -1,13 +1,14 @@
 import { app } from "../server";
 
 // * Import routes file
-import feature from '../routes/features';
+import readFeatures from '../routes/readFeatures';
+import writeFeatures from "../routes/writeFeatures";
 
 export default () => {
 
     // * Routes
-    app.use("/v1/city/", feature);
-    app.use("/v1/all/", feature);
+    app.use("/v1/", readFeatures);
+    app.use("/v1/", writeFeatures);
 
 
 }

@@ -7,8 +7,8 @@ import { getFeaturesByCity, getAllFeatures } from "../controllers/readFeatures";
 
 // * Endpoint used to get all the features from one location
 
-router.get('/:city', getFeaturesByCity);
-router.get('/', getAllFeatures);
+router.get('/city/:city', getFeaturesByCity);
+router.get('/all/', getAllFeatures);
 
 
 export default router;
