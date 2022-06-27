@@ -26,5 +26,4 @@ export function getAllFeatures(req: Request, res: Response) {
         }
         res.status(200).send(arrayToGeoJSON(results));
     });
-
 }
