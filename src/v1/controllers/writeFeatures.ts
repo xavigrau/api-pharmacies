@@ -1,15 +1,22 @@
 import {Request, Response} from "express";
+import Feature from "../models/Feature";
 
-export function postFeature(req: Request, res: Response) {
+export async function postFeature(req: Request, res: Response) {
 
-    // Add one feature
-    res.status(200).send('Add one feature');
+    const newFeature = new Feature(req.body);
 
-}
+    await newFeature.save((err, document, [isSaveSuccessful]) => {
 
-export function postMultipleFeatures(req: Request, res: Response) {
+        if (err) {
+            return res.status(500).send({ message: `Error saving feature ${err.message}` });
+        }
 
-    // Add multiple feature
-    res.status(200).send('Add multiple features');
+        if (isSaveSuccessful === 1) {
+            return res.status(200).send({ message: 'Successfully saved', document: document });
+        }
+
+        res.status(500).send({ message: `Unexpected error` });
+
+    });
 
 }
