@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import Feature from "../models/Features";
-import { arrayToGeoJSON } from "../services/locationService";
+import Feature from "../models/Feature";
+import { arrayToGeoJSON } from "../services/featuresService";
 
 export function getFeatures(req: Request, res: Response) {
 
