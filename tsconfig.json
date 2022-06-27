@@ -8,5 +8,9 @@
     "outDir": "dist",
     "allowJs": true
   },
+  "include":[
+    "src/**/*",
+    "src/**/*.json",
+  ],
   "lib": ["es2015"]
 }

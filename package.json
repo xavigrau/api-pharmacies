@@ -3,9 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/v1/server.ts",
+  "engines": {
+    "node": "17.7.1"
+  },
   "scripts": {
-    "start": "nodemon",
-    "lint": "eslint . --ext .ts",
+    "start": "tsc & nodemon",
+    "web": "node dist/server.js",
+    "build": "tsc",
+    "lint": "eslint . -ext .ts",
+    "postinstall": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
