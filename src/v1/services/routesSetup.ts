@@ -6,8 +6,8 @@ import locations from '../routes/features';
 export default () => {
 
     // * Routes
-    app.use("/city", locations);
-    app.use("/all",locations);
+    app.use("/v1/city/", locations);
+    app.use("/v1/all/",locations);
 
 
 }

@@ -18,12 +18,10 @@ middlewareSetup();
 // * Routes setup
 routesSetup();
 
-
 // * Testing endpoint
 app.get("/", (req: Request, res: Response) => {
     res.status(200).send("I'm working!");
 });
-
 
 // * Database and start server
 initDatabase(config.PORT, config.URI, app);

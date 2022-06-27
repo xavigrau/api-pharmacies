@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import Feature from "../models/Feature";
 import { arrayToGeoJSON } from "../services/featuresService";
 
-export function getFeatures(req: Request, res: Response) {
+export function getFeaturesByCity(req: Request, res: Response) {
 
     Feature.find({ "properties.city": req.params.city }, function (err, results) {
         if (err) {
@@ -17,7 +17,6 @@ export function getFeatures(req: Request, res: Response) {
 
 export function getAllFeatures(req: Request, res: Response) {
 
-
     Feature.find({}, function (err, results) {
         if (err) {
             return res.status(500).send( { message: `Error getting locations ${err.message}` });
@@ -27,4 +26,5 @@ export function getAllFeatures(req: Request, res: Response) {
         }
         res.status(200).send(arrayToGeoJSON(results));
     });
+
 }
