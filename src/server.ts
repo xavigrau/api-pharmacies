@@ -8,12 +8,10 @@ export const app = express();
 import { initDatabase } from "./connection";
 
 // * Import config file
-import { config } from "./config/config";
+import { config } from "./v1/config/config";
 
-// * Import routes file
-import locations from './routes/locations';
 
-//EJS
+// * EJS
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -26,6 +24,9 @@ app.use(cors({
 app.get("/", (req: Request, res: Response) => {
     res.status(200).send("I'm working!");
 });
+
+// * Import routes file
+import locations from './v1/routes/locations';
 
 // * Routes
 app.use("/city", locations);

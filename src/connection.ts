@@ -16,7 +16,7 @@ export function initDatabase(PORT: number, URI: string, app: Express) {
 
 }
 
-function startServer(PORT: number, app: any) {
+function startServer(PORT: number, app: Express) {
 
     app.listen(PORT, () => {
         console.log( `server started at http://localhost:${ PORT }` );
