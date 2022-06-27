@@ -1,6 +1,6 @@
-import mongoose, { Schema, Document } from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 
-const pharmSchema=new mongoose.Schema( {
+const featureSchema = new Schema( {
     type: String,
     geometry: {
         type: String,
@@ -23,8 +23,8 @@ const pharmSchema=new mongoose.Schema( {
         weekday_text:Array<string>
     }
 })
-/*
-const FeatureSchema: Schema = new Schema({
+
+/*const FeatureSchema: Schema = new Schema({
     type: { type: String, required: true },
     geometry: {
         type: { type: String, required: true },
@@ -46,8 +46,7 @@ const FeatureSchema: Schema = new Schema({
         schedule: { type: Array, required: true },
         weekday_text: { type: String, required: true },
     }
-})
-*/
+})*/
 
 // * Export the model and return the interface
-export default mongoose.model('Feature', pharmSchema);
+export default mongoose.model('Feature', featureSchema);
