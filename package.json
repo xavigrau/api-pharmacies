@@ -7,8 +7,8 @@
     "node": "17.7.1"
   },
   "scripts": {
-    "start": "tsc & nodemon",
-    "web": "node dist/server.js",
+    "start": "node dist/server.js",
+    "dev": "tsc & nodemon",
     "build": "tsc",
     "lint": "eslint . -ext .ts",
     "postinstall": "npm run build",
