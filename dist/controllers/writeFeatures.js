@@ -17,23 +17,16 @@ const Feature_1 = __importDefault(require("../models/Feature"));
 function postFeature(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const newFeature = new Feature_1.default(req.body);
-        const exist = yield Feature_1.default.findOne({ "properties.cnn": newFeature.properties.cnn }, (err, result) => {
-            if (err) {
-                return res.status(500).send({ message: `Error getting feature ${err.message}` });
-            }
-            return result;
-        });
-        if (exist) {
+        const exist = yield Feature_1.default.find({ "properties.cnn": newFeature.properties.cnn });
+        if (exist.length > 0) {
             return res.status(500).send({ message: `This feature is already in the databases` });
         }
-        yield newFeature.save((err, document, [isSaveSuccessful]) => {
+        yield newFeature.save((err, document) => {
             if (err) {
+                console.log(err);
                 return res.status(500).send({ message: `Error saving feature ${err.message}` });
             }
-            if (isSaveSuccessful === 1) {
-                return res.status(200).send({ message: 'Successfully saved', document: document });
-            }
-            res.status(500).send({ message: `Unexpected error` });
+            return res.status(200).send({ message: 'Successfully saved', document: document });
         });
     });
 }

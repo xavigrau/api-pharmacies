@@ -43,7 +43,7 @@ export async function getFeatureNearPoint(req: Request, res: Response) {
 
 export async function getFeaturesByTown(req: Request, res: Response) {
 
-    await Feature.find({"properties.town": req.params.town}, (err, results) => {
+    Feature.find({"properties.town": req.params.town}, (err, results) => {
         if (err) {
             return res.status(500).send({message: `Error getting features ${err.message}`});
         }

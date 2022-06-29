@@ -5,30 +5,20 @@ export async function postFeature(req: Request, res: Response) {
 
     const newFeature = new Feature(req.body);
 
-    const exist = await Feature.findOne({ "properties.cnn": newFeature.properties.cnn }, (err, result) => {
+    const exist = await Feature.find({ "properties.cnn": newFeature.properties.cnn });
 
-        if (err) {
-            return res.status(500).send({message: `Error getting feature ${err.message}`});
-        }
-        return result;
-    });
-
-    if (exist) {
+    if (exist.length > 0) {
         return res.status(500).send({message: `This feature is already in the databases`});
     }
 
-    await newFeature.save((err, document, [isSaveSuccessful]) => {
+    await newFeature.save((err, document) => {
 
         if (err) {
+            console.log(err);
             return res.status(500).send({ message: `Error saving feature ${err.message}` });
         }
 
-        if (isSaveSuccessful === 1) {
-            return res.status(200).send({ message: 'Successfully saved', document: document });
-        }
-
-        res.status(500).send({ message: `Unexpected error` });
-
+        return res.status(200).send({ message: 'Successfully saved', document: document });
     });
 
 }

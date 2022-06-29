@@ -42,16 +42,9 @@ const featureSchema = new mongoose_1.Schema({
         address: String,
         postalCode: String,
         schedule: {
-            periods: [{
-                    open: {
-                        day: Number,
-                        time: String
-                    },
-                    close: {
-                        day: Number,
-                        time: String
-                    }
-                }],
+            periods: [
+                { type: Object }
+            ],
             weekday_text: (Array)
         },
         formatted_phone_number: String,
