@@ -36,7 +36,7 @@ router.get('/country/:country', getFeaturesByCountry);
 router.get('/near/:lat/:long/:meters', getFeatureNearPoint)
 
 // * Get all the features
-router.get('/all/', getAllFeatures);
+router.get('/all', getAllFeatures);
 
 
 export default router;

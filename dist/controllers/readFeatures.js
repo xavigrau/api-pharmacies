@@ -56,7 +56,7 @@ function getFeatureNearPoint(req, res) {
 exports.getFeatureNearPoint = getFeatureNearPoint;
 function getFeaturesByTown(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        yield Feature_1.default.find({ "properties.town": req.params.town }, (err, results) => {
+        Feature_1.default.find({ "properties.town": req.params.town }, (err, results) => {
             if (err) {
                 return res.status(500).send({ message: `Error getting features ${err.message}` });
             }
