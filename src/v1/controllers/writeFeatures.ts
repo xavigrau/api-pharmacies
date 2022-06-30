@@ -8,7 +8,7 @@ export async function postFeature(req: Request, res: Response) {
     const exist = await Feature.find({ "properties.cnn": newFeature.properties.cnn });
 
     if (exist.length > 0) {
-        return res.status(500).send({message: `This feature is already in the databases`});
+        return res.status(500).send({message: `This feature is already in the database`});
     }
 
     await newFeature.save((err, document) => {
