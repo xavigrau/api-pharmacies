@@ -12,9 +12,7 @@ export default () => {
     app.use(bodyParser.json());
 
     // * Cors
-    app.use(cors({
-        origin: 'http://localhost:8000'
-    }));
+    app.use(cors());
 
     // * Morgan
     app.use(morgan('dev'));
