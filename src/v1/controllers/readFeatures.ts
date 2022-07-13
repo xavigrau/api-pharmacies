@@ -45,13 +45,10 @@ export async function getFeaturesByTown(req: Request, res: Response) {
 
     try {
 
-        // Create regex for the search in insensitive mode
-        const regex = new RegExp([req.params.town].join(""), "i");
-
-        const data = await Feature.find({"properties.town": regex });
+        const data = await Feature.find({"properties.town": req.params.town })
+            .collation({ locale: "en", strength: 1 });
 
         if(data.length === 0) {
-
             return res.status(404).send({error: 'No results found'});
         }
 
