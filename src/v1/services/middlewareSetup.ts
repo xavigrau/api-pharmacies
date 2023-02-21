@@ -12,7 +12,9 @@ export default () => {
     app.use(bodyParser.json());
 
     // * Cors
-    app.use(cors());
+    app.use(cors({
+        origin: 'https://finda-demo.herokuapp.com'
+    }));
 
     // * Morgan
     app.use(morgan('dev'));
